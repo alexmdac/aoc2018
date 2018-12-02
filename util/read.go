@@ -51,3 +51,14 @@ func ReadIntsFile() ([]int, error) {
 	defer f.Close()
 	return ReadInts(f)
 }
+
+// ReadLinesFile opens "input.txt" and calls ReadLines.
+func ReadLinesFile() ([]string, error) {
+	f, err := os.Open(_inputFilename)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	return ReadLines(f)
+
+}
