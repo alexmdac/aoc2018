@@ -9,5 +9,5 @@ import (
 func TestSolution(t *testing.T) {
 	soln, err := run()
 	require.NoError(t, err)
-	require.Equal(t, solution{sum: 439, firstRepeatedSum: 124645}, soln)
+	require.Equal(t, solution{}, soln)
 }

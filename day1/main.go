@@ -8,28 +8,32 @@ import (
 )
 
 func main() {
-	sum, rep, err := run()
+	soln, err := run()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s: %s\n", os.Args[0], err)
 		os.Exit(1)
 	}
 
-	fmt.Printf("sum is %d\n", sum)
-	fmt.Printf("first repetition is %d\n", rep)
+	fmt.Printf("%+v\n", soln)
 }
 
-func run() (int, int, error) {
+type solution struct {
+	sum              int
+	firstRepeatedSum int
+}
+
+func run() (solution, error) {
 	f, err := os.Open("input.txt")
 	if err != nil {
-		return 0, 0, err
+		return solution{}, err
 	}
 
 	ints, err := util.ReadInts(f)
 	if err != nil {
-		return 0, 0, err
+		return solution{}, err
 	}
 
-	return sum(ints), firstRepeatedSum(ints), nil
+	return solution{sum(ints), firstRepeatedSum(ints)}, nil
 }
 
 func sum(ints []int) int {
