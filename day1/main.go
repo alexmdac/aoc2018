@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/alexmdac/aoc2018/util"
+	"golang.org/x/tools/container/intsets"
 )
 
 func main() {
@@ -45,13 +46,13 @@ func sum(ints []int) int {
 }
 
 func firstRepeatedSum(ints []int) int {
-	s, m := 0, map[int]struct{}{}
+	s, seen := 0, intsets.Sparse{}
 	for {
 		for _, n := range ints {
-			if _, ok := m[s]; ok {
+			if seen.Has(s) {
 				return s
 			}
-			m[s] = struct{}{}
+			seen.Insert(s)
 			s += n
 		}
 	}
