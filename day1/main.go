@@ -24,12 +24,7 @@ type solution struct {
 }
 
 func run() (solution, error) {
-	f, err := os.Open("input.txt")
-	if err != nil {
-		return solution{}, err
-	}
-
-	ints, err := util.ReadInts(f)
+	ints, err := util.ReadIntsFile()
 	if err != nil {
 		return solution{}, err
 	}

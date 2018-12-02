@@ -3,9 +3,12 @@ package util
 import (
 	"io"
 	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 )
+
+const _inputFilename = "input.txt"
 
 // ReadLines returns an array of strings, one per line of the input from the
 // reader.
@@ -37,4 +40,14 @@ func ReadInts(r io.Reader) ([]int, error) {
 	}
 
 	return ints, nil
+}
+
+// ReadIntsFile opens "input.txt" and calls ReadInts.
+func ReadIntsFile() ([]int, error) {
+	f, err := os.Open(_inputFilename)
+	if err != nil {
+		return nil, err
+	}
+	defer f.Close()
+	return ReadInts(f)
 }
