@@ -9,5 +9,5 @@ import (
 func TestSolution(t *testing.T) {
 	soln, err := run()
 	require.NoError(t, err)
-	require.Equal(t, solution{}, soln)
+	require.Equal(t, &solution{}, soln)
 }

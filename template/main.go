@@ -17,6 +17,6 @@ func main() {
 
 type solution struct{}
 
-func run() (solution, error) {
-	return solution{}, nil
+func run() (*solution, error) {
+	return &solution{}, nil
 }
